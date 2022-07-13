@@ -1,0 +1,10 @@
+<%= image_tag 'test1.jpg', onmouseover: "this.src='#{asset_path('test2.jpg')}'", onmouseout: "this.src='#{asset_path('test1.jpg')}'", height: '300px', class: 'd-block mx-auto my-3' %>
+
+
+<div class="slider mx-auto mt-5" style="width:600px">
+  <%= image_tag 'test1.jpg', class: 'img-responsive' %>
+  <%= image_tag 'test2.jpg', class: 'img-responsive' %>
+  <%= image_tag 'test3.jpg', class: 'img-responsive' %>
+  <%= image_tag 'test4.jpg', class: 'img-responsive' %>
+  <%= image_tag 'test5.jpg', class: 'img-responsive' %>
+</div>
