@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>ExperimentApp</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,9 +11,54 @@
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://kit.fontawesome.com/8210244f03.js" crossorigin="anonymous"></script>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="d-flex flex-column vh-100">
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand p-3" href="/">NaganoCake</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav nav-box ml-auto">
+
+              <li class="nav-item">
+                <%= link_to "About", homes_about_path, class: 'nav-link text-light' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to '商品一覧', "#i", class: 'nav-link text-light' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'カート', "#i", class: 'nav-link text-light' %>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to "ログイン", "#i", class: 'nav-link text-light' %>
+              </li>
+
+            </ul>
+            <div class="text-field"></div>
+            <div class="nav-link text-light search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div id="i"></div>
+    <main class= <%= @color %>>
+      <%= form_with url: root_path, method: :get do |f| %>
+        <% if @color == "black" %>
+          <%= f.hidden_field :bg_color, :value => "red" %>
+        <% else %>
+          <%= f.hidden_field :bg_color, :value => "black" %>
+        <% end %>
+        <%= f.submit "変更する" %>
+      <% end %>
+      <%= yield %>
+    </main>
   </body>
 </html>
